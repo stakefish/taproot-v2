@@ -46,8 +46,8 @@ export const MASK = "/static/images/mask.svg"
 export const DEFAULT_IMAGE = "/static/images/default.png"
 
 export const DEFAULT_COORDS = {
-  x: 260,
-  y: 160,
+  x: 250,
+  y: 150,
 }
 
 export const STAGE_WIDTH = 500

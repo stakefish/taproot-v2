@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { rem } from "polished"
 
 import Button from "../../components/Button"
 
@@ -12,10 +13,15 @@ interface WrapperProps {
 
 export const Wrapper = styled.div<WrapperProps>`
   position: relative;
+  position: relative;
+  border-radius: ${rem(24)};
+  background-color: ${(props) => props.theme.colors.black};
   background-image: ${(props) => `url(${props.preview})` || "none"};
   background-size: cover;
   background-position: center;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
   transform: translate3d(0, 0, 0);
   cursor: ${(props) => CURSORS.get(props.cursor)};
 
@@ -28,28 +34,38 @@ export const Wrapper = styled.div<WrapperProps>`
     width: 100%;
     height: 100%;
     backdrop-filter: blur(18px);
+    border-radius: ${rem(24)};
   }
 
-  .stage,
-  .konvajs-content,
-  canvas {
-    width: 100% !important;
-    object-fit: cover;
+  .stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border-radius: ${rem(24)};
   }
 
-  @media all and (min-width: 481px) {
-    height: 100% !important;
+  .konvajs-content {
+    min-width: 540px;
+    min-height: 415px;
 
-    /* .stage,
-    .konvajs-content,
-    canvas {
+    @media all and (min-width: 1025px) {
+      width: 100% !important;
       height: 100% !important;
-    } */
-  }
+    }
 
-  @media all and (max-width: 480px) {
-    overflow: visible;
-    transform: none;
+    @media all and (max-width: 580px) {
+      width: 280px !important;
+      height: 280px !important;
+      min-width: 0;
+      min-height: 0;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+    }
   }
 `
 

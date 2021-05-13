@@ -49,6 +49,7 @@ declare module 'styled-components' {
     black: string
     white: string
     odd: string
+    background: string
   }
   transition: {
     base: string

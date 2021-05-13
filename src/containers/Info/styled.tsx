@@ -1,17 +1,23 @@
 import styled from "styled-components"
 import { rem } from "polished"
+import { Row } from "react-styled-flexboxgrid"
 
 import Button from "../../components/Button"
 
 export const Wrapper = styled.div`
+  width: ${rem(645)};
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 ${rem(40)};
   text-align: center;
+
+  ${Row} {
+    height: 100%;
+  }
 
   p {
     font-size: ${(props) => rem(props.theme.fontSize.lead)};
     margin-bottom: ${rem(28)};
-    max-width: ${rem(395)};
-    margin-left: auto;
-    margin-right: auto;
   }
 
   @media all and (max-width: 480px) {
@@ -29,6 +35,8 @@ export const Wrapper = styled.div`
 
 export const Links = styled.div`
   padding-bottom: ${rem(10)};
+  font-size: ${rem(16)};
+  font-weight: 500;
 
   svg path {
     fill: ${(props) => props.theme.colors.primary};
@@ -36,7 +44,7 @@ export const Links = styled.div`
   }
 
   a {
-    color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.white};
     padding: ${rem(10)};
     white-space: nowrap;
 
@@ -45,11 +53,7 @@ export const Links = styled.div`
     }
 
     &:hover {
-      color: #de0000;
-
-      svg path {
-        fill: #de0000;
-      }
+      color: ${(props) => props.theme.colors.primary};
     }
   }
 
@@ -94,7 +98,7 @@ export const UploadWrapper = styled.div`
 
   ${Button} {
     max-width: 100%;
-    min-width: ${rem(210)};
+    min-width: ${rem(205)};
   }
 
   @media all and (min-width: 768px) {
@@ -122,5 +126,26 @@ export const UploadWrapper = styled.div`
     ${Button} {
       width: 100%;
     }
+  }
+`
+
+export const Logo = styled.div`
+  width: ${rem(64)};
+  height: ${rem(64)};
+  margin: ${rem(20)} auto;
+  border-radius: 4px;
+  background-color: #31be37;
+  border-radius: 2px;
+  position: relative;
+
+  &:after {
+    content: "";
+    top: ${rem(5)};
+    left: ${rem(5)};
+    right: ${rem(5)};
+    bottom: ${rem(18)};
+    position: absolute;
+    border-radius: 2px;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 1%, rgba(255, 255, 255, 0.01));
   }
 `

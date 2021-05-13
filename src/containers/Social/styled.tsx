@@ -7,23 +7,15 @@ interface LinkProps {
 }
 
 export const Wrapper = styled.div`
-  margin-bottom: ${rem(30)};
+  margin-top: ${rem(30)};
   color: ${(props) => props.theme.colors.gray};
-  text-align: left;
+  text-align: center;
 
   a {
     color: inherit;
 
-    svg {
-      opacity: 0.24;
-    }
-
     &:hover {
-      color: ${(props) => props.theme.colors.primary};
-
-      svg {
-        opacity: 0.48;
-      }
+      color: ${(props) => props.theme.colors.white};
     }
   }
 
@@ -36,7 +28,7 @@ export const Wrapper = styled.div`
 `
 
 export const SocialLink = styled.a<LinkProps>`
-  margin: 0 ${rem(5)};
+  margin: 0 ${rem(1)};
 
   &:first-child {
     margin-left: 0 !important;
@@ -61,11 +53,9 @@ export const Copy = styled.div`
 export const List = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 
   svg {
-    margin-right: 0;
-    width: ${rem(24)};
-    height: ${rem(24)};
+    height: ${rem(26)};
   }
 `

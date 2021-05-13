@@ -3,9 +3,6 @@ import { rem, rgba } from "polished"
 import Button from "../../components/Button"
 
 export const Wrapper = styled.div`
-  background-color: ${(props) => props.theme.colors.white};
-  border: 1px solid ${(props) => props.theme.colors.white};
-
   [data-reach-slider-input][data-orientation="horizontal"] {
     height: 2px;
   }
@@ -34,7 +31,7 @@ export const Wrapper = styled.div`
   }
 
   [data-reach-slider-track] {
-    background-color: ${(props) => rgba(props.theme.colors.dark, 0.16)};
+    background-color: ${(props) => rgba(props.theme.colors.white, 0.16)};
 
     &[data-orientation="horizontal"] {
       &::after,

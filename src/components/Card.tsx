@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { rem } from "polished"
 
 /**
  * Types
@@ -7,12 +6,20 @@ import { rem } from "polished"
 export interface CardProps {}
 
 const Card = styled.div<CardProps>`
-  padding: ${rem(54)} ${rem(40)};
-  padding: 3vw 2vw;
+  height: 100%;
   position: relative;
 
-  @media all and (max-width: 767px) {
-    padding: 24px 20px 16px;
+  @media all and (max-width: 480px) {
+    min-height: 0;
+    height: auto;
+
+    &:first-child {
+      margin-bottom: 30px;
+
+      @media all and (min-width: 481px) {
+        height: 400px;
+      }
+    }
   }
 `
 

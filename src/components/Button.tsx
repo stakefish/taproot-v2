@@ -23,18 +23,20 @@ export interface ButtonProps {
 const Button = styled.button<ButtonProps>`
   display: inline-flex;
   padding: ${rem(14)} ${rem(24)};
-  justify-content: center;
-  align-items: center;
-  color: inherit;
+  border-radius: ${rem(16)};
+  position: relative;
   letter-spacing: 0;
-  border: 0;
-  font-family: inherit;
   line-height: 1;
-  font-size: ${(props) => rem(props.theme.fontSize.base)};
-  font-weight: ${(props) => props.theme.fontWeight.semibold};
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: ${(props) => rem(props.theme.fontSize.lead)};
+  font-weight: ${(props) => props.theme.fontWeight.medium};
+  transition: background-color ${(props) => props.theme.transition.base};
   appearance: none;
   cursor: pointer;
-  transition: background-color ${(props) => props.theme.transition.base};
   outline: none !important;
 
   @media all and (max-width: 480px) {
@@ -45,12 +47,8 @@ const Button = styled.button<ButtonProps>`
   ${(props) =>
     props.$color === ButtonColor.White &&
     css`
-      background-color: ${props.theme.colors.white};
-      color: ${props.theme.colors.black};
-
-      svg path {
-        fill: ${props.theme.colors.black};
-      }
+      background-color: ${(props) => props.theme.colors.white};
+      color: ${(props) => props.theme.colors.dark};
 
       &:hover {
         background-color: #e5e5e5;
@@ -63,12 +61,8 @@ const Button = styled.button<ButtonProps>`
       background-color: ${props.theme.colors.primary};
       color: ${props.theme.colors.white};
 
-      svg path {
-        fill: ${props.theme.colors.white};
-      }
-
       &:hover {
-        background-color: #de0000;
+        background-color: #0e690f;
       }
     `}
 
@@ -77,10 +71,6 @@ const Button = styled.button<ButtonProps>`
     css`
       background-color: ${props.theme.colors.dark};
       color: ${props.theme.colors.white};
-
-      svg path {
-        fill: ${props.theme.colors.white};
-      }
 
       &:hover {
         background-color: #353535;
@@ -93,10 +83,6 @@ const Button = styled.button<ButtonProps>`
       background-color: #f3f3f3;
       color: ${props.theme.colors.dark};
 
-      svg path {
-        fill: ${props.theme.colors.white};
-      }
-
       &:hover {
         background-color: #e5e5e5;
       }
@@ -105,11 +91,13 @@ const Button = styled.button<ButtonProps>`
   ${(props) =>
     props.$size === ButtonSize.Lg &&
     css`
-      text-transform: uppercase;
-      letter-spacing: ${rem(2)};
-      padding: ${rem(20)} ${rem(24)};
-      font-size: ${rem(12)};
-      font-weight: ${(props) => props.theme.fontWeight.extrabold};
+      font-size: ${rem(20)};
+      padding: ${rem(20)} ${rem(32)};
+
+      svg {
+        height: ${rem(30)};
+        margin: ${rem(-7)} ${rem(8)} ${rem(-7)} ${rem(-15)};
+      }
 
       @media all and (max-width: 480px) {
         font-size: 8px;

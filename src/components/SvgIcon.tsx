@@ -13,11 +13,12 @@ export interface SvgIconProps {
 }
 
 const SvgIcon = styled.svg<SvgIconProps>`
-  width: ${rem(20)};
+  width: auto;
   height: ${rem(20)};
   display: inline-block;
   vertical-align: middle;
   margin-right: ${rem(10)};
+  line-height: normal;
   transition: opacity ${(props) => props.theme.transition.base};
 
   ~ span {
@@ -26,7 +27,7 @@ const SvgIcon = styled.svg<SvgIconProps>`
   }
 
   path {
-    transition: fill ${(props) => props.theme.transition.base};
+    fill: currentColor;
   }
 `
 

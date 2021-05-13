@@ -1,7 +1,9 @@
 import styled from "styled-components"
+import { rem } from "polished"
 
 const Main = styled.main`
   min-height: 100vh;
+  padding-top: ${rem(48)};
 
   @media all and (max-width: 580px) {
     position: relative;
