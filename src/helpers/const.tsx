@@ -20,7 +20,7 @@ export const APP_LINKS = [
 ]
 
 export const TWITTER_SHARING_URL =
-  "https://twitter.com/intent/tweet?text=Layer%202%20is%20coming.%20Be%20ready%20for%20scaling%20through%20%23Optimism!&url=https%3A%2F%2Fimoptimistic.xyz&hashtags=Ethereum,Rollup,Layer2"
+  "https://twitter.com/intent/tweet?text=If%20your%20coin%20has%20a%20dev%20team%2C%20might%20as%20well%20use%20them%20right%3F%20%F0%9F%99%83%0A%0AGet%20your%20new%20prof%20pic%20flair%20here%20to%20signal%20support%20for%20the%20%23Bitcoin%20Taproot%20upgrade.%0A%0ABetter%20%23throughput.%20%E2%9C%85%20Better%20%23privacy.%20%E2%9C%85%20%23Taproot.%20%F0%9F%9F%A9%0A%0Ahttps%3A%2F%2Ftaproot.fish%0A"
 
 export const DISCLAIMER =
   "We take privacy very seriously. The “TAPROOT MASK” app is provided for fun and convenience. We never store photos, and do not transmit any data besides an anonymous identifier containing no personal information. We have also made the source code available in the event you would like to review it."
