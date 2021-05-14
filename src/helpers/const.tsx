@@ -47,7 +47,7 @@ export const SOCIAL_LINKS = [
 // === MASK CONFIG ===
 export const FILE_NAME = "optimistic-mask.png" // name for downloaded image
 export const MASK = "/static/images/mask.svg"
-export const SQUARE = "/static/images/green-square.png"
+export const SQUARE = "/static/images/green-square.svg"
 export const DEFAULT_IMAGE = "/static/images/default.png"
 
 export const DEFAULT_COORDS = {

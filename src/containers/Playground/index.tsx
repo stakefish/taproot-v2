@@ -35,7 +35,19 @@ const Playground: React.FC = () => {
     }
   }
 
-  const SandboxComponent = () => <Sandbox file={file} stageRef={stageRef} />
+  const ControlsComponent = () => (
+    <>
+      <Controller
+        kind={kind}
+        rotation={rotation[activeRef]}
+        scale={scale[activeRef]}
+        onRotation={onRotation}
+        onScale={onScale}
+        onKind={onKind}
+      />
+      <Buttons onSave={onSave} />
+    </>
+  )
 
   return (
     <Section>
@@ -45,27 +57,13 @@ const Playground: React.FC = () => {
             <Card as={Col} xs={12} md={7}>
               <S.InnerCard>
                 <Info onDrop={onDrop} showSettings={file} />
-                {isMobile && <SandboxComponent />}
-                {file ? (
-                  <>
-                    <Controller
-                      kind={kind}
-                      rotation={rotation[activeRef]}
-                      scale={scale[activeRef]}
-                      onRotation={onRotation}
-                      onScale={onScale}
-                      onKind={onKind}
-                    />
-                    <Buttons onSave={onSave} />
-                  </>
-                ) : null}
+                {!isMobile && file ? <ControlsComponent /> : null}
               </S.InnerCard>
             </Card>
-            {!isMobile && (
-              <Card as={Col} xs={12} md={5}>
-                <SandboxComponent />
-              </Card>
-            )}
+            <Card as={Col} xs={12} md={5}>
+              <Sandbox file={file} stageRef={stageRef} />
+            </Card>
+            {isMobile && file ? <ControlsComponent /> : null}
           </S.Wrapper>
         </S.Outer>
       </Grid>
