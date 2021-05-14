@@ -1,5 +1,7 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useRef, useState } from "react"
 import { Grid, Row, Col } from "react-styled-flexboxgrid"
+
+import { download } from "../../helpers/utils"
 
 import Info from "../Info"
 import Sandbox from "../Sandbox"
@@ -14,12 +16,20 @@ import { FluidGrid } from "../../core/GlobalStyles"
 import * as S from "./styled"
 
 const Playground: React.FC = () => {
+  const stageRef = useRef<any>(null)
+
   const [file, setFile] = useState<string | undefined>()
 
   const { rotation, scale, setRotation, setScale } = useContext(ManagerContext)
 
   const onDrop = ([file]: File[]) => {
     setFile(URL.createObjectURL(file))
+  }
+
+  const onSave = () => {
+    if (stageRef?.current) {
+      download(stageRef.current.toDataURL())
+    }
   }
 
   return (
@@ -33,13 +43,13 @@ const Playground: React.FC = () => {
                 {file && (
                   <>
                     <Controller rotation={rotation} scale={scale} onRotation={setRotation} onScale={setScale} />
-                    <Buttons />
+                    <Buttons onSave={onSave} />
                   </>
                 )}
               </S.InnerCard>
             </Card>
             <Card as={Col} xs={12} md={5}>
-              <Sandbox file={file} />
+              <Sandbox file={file} stageRef={stageRef} />
             </Card>
           </S.Wrapper>
         </S.Outer>

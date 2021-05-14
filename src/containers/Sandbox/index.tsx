@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from "react"
+import React, { useCallback, useContext, useEffect, useState } from "react"
 import { Stage, Layer } from "react-konva"
 import { Vector2d } from "konva/types/types"
 import { KonvaEventObject } from "konva/types/Node"
@@ -24,6 +24,7 @@ import * as S from "./styled"
 
 interface Props {
   file?: string
+  stageRef: any
 }
 
 export enum Cursor {
@@ -38,9 +39,7 @@ export const CURSORS = new Map<Cursor, "initial" | "grab" | "grabbing">([
   [Cursor.Grabbing, "grabbing"],
 ])
 
-const Sandbox: React.FC<Props> = ({ file }: Props) => {
-  const stageRef = useRef<any>(null)
-
+const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
   const { rotation, scale, setRotation } = useContext(ManagerContext)
 
   const [coordinates, setCoordinates] = useState<Vector2d>(DEFAULT_COORDS)

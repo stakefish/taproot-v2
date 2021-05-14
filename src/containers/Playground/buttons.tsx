@@ -8,7 +8,11 @@ import { IconShare, IconSave } from "../../icons"
 
 import * as S from "./styled"
 
-const Buttons: React.FC = () => {
+interface Props {
+  onSave: () => void
+}
+
+const Buttons: React.FC<Props> = ({ onSave }: Props) => {
   return (
     <S.Buttons>
       <Row middle="sm" between="sm">
@@ -20,7 +24,7 @@ const Buttons: React.FC = () => {
         <Col xs={12} sm={8}>
           <Row>
             <Col xs={12} sm={7}>
-              <Button $color={ButtonColor.Primary} $block>
+              <Button $color={ButtonColor.Primary} $block onClick={onSave}>
                 <IconSave />
                 Download
               </Button>
