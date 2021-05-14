@@ -21,11 +21,12 @@ const Playground: React.FC = () => {
 
   const [file, setFile] = useState<string | undefined>()
 
-  const { kind, rotation, scale, activeRef, onRotation, onScale, onKind } = useContext(ManagerContext)
+  const { kind, rotation, scale, activeRef, clear, onRotation, onScale, onKind } = useContext(ManagerContext)
 
   const isMobile = useMediaQuery({ maxWidth: 1023 })
 
   const onDrop = ([file]: File[]) => {
+    clear()
     setFile(URL.createObjectURL(file))
   }
 

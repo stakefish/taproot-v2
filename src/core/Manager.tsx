@@ -32,7 +32,13 @@ interface ContextType {
   onDrag: (event: KonvaEventObject<DragEvent | TouchEvent>) => void
   onAdd: (kind: ElementKind, meta?: any) => void
   onKind: (nextKind: ElementKind) => void
+  clear: () => void
 }
+
+const MASKS = new Map<ElementKind, string>([
+  [ElementKind.Mask, MASK],
+  [ElementKind.Square, SQUARE],
+])
 
 const ManagerContext: React.Context<ContextType> = React.createContext({} as ContextType)
 
@@ -65,16 +71,19 @@ export const ManagerProvider: React.FC<Props> = ({ children }: Props) => {
     setKind(nextKind)
   }
 
-  const masks = new Map<ElementKind, string>([
-    [ElementKind.Mask, MASK],
-    [ElementKind.Square, SQUARE],
-  ])
-
   const onAdd = (kind: ElementKind, meta: { rotation: number; coordinates: Vector2d }) => {
-    setFigures((figures) => [...figures, { kind, src: masks.get(kind) } as Element])
+    setFigures((figures) => [...figures, { kind, src: MASKS.get(kind) } as Element])
     setRotation((rotation) => [...rotation, meta?.rotation ?? CONTROLLER_ROTATION])
     setCoordinates((coordinates) => [...coordinates, meta?.coordinates ?? DEFAULT_COORDS])
     setScale((scale) => [...scale, { x: SCALE_DEFAULT, y: SCALE_DEFAULT }])
+  }
+
+  const clear = () => {
+    setFigures([])
+    setCoordinates([])
+    setKind(ElementKind.Mask)
+    setRotation([CONTROLLER_ROTATION])
+    setScale([{ x: CONTROLLER_SIZE, y: CONTROLLER_SIZE }])
   }
 
   return (
@@ -92,6 +101,7 @@ export const ManagerProvider: React.FC<Props> = ({ children }: Props) => {
         onAdd,
         onDrag,
         onKind,
+        clear,
       }}
     >
       {children}

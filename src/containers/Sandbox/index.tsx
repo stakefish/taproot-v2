@@ -11,6 +11,8 @@ import {
   DEFAULT_IMAGE,
   SQUARE_WIDTH,
   SQUARE_HEIGHT,
+  MASK,
+  CONTROLLER_SIZE,
 } from "../../helpers/const"
 
 import { detectFace, loadModels } from "../../helpers/utils"
@@ -20,6 +22,7 @@ import ManagerContext from "../../core/Manager"
 
 import * as S from "./styled"
 import { ElementKind } from "../../helpers/types"
+import { isEmpty } from "ramda"
 
 interface Props {
   file?: string
@@ -63,11 +66,27 @@ const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
     }
   }, [file, onDetect])
 
+  const defaultX = 220
+  const defaultY = 210
+
   return (
     <S.Wrapper preview={file} cursor={Cursor.Default}>
       <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT} ref={stageRef} className="stage">
         <Layer>
           <Figure fit src={file || DEFAULT_IMAGE} />
+
+          {isEmpty(figures) ? (
+            <Figure
+              draggable
+              src={MASK}
+              x={defaultX}
+              y={defaultY}
+              offsetX={MASK_WIDTH / SCALE_FACTOR}
+              offsetY={MASK_HEIGHT / SCALE_FACTOR}
+              scale={{ x: CONTROLLER_SIZE, y: CONTROLLER_SIZE }}
+            />
+          ) : null}
+
           {figures?.map((figure, index) => {
             // @ts-expect-error
             const { width, height } = SIZES?.get(figure.kind)
