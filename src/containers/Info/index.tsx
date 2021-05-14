@@ -22,7 +22,6 @@ const Info: React.FC<Props> = ({ onDrop, showSettings }: Props) => {
       <Row middle="xs" center="xs">
         <Col xs={12}>
           {!showSettings && <S.Logo />}
-
           <h1>{APP_TITLE}</h1>
           <p>{APP_DESCRIPTION}</p>
           <S.Links>

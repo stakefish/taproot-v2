@@ -35,20 +35,6 @@ const Playground: React.FC = () => {
     }
   }
 
-  const ControlsComponent = () => (
-    <>
-      <Controller
-        kind={kind}
-        rotation={rotation[activeRef]}
-        scale={scale[activeRef]}
-        onRotation={onRotation}
-        onScale={onScale}
-        onKind={onKind}
-      />
-      <Buttons onSave={onSave} />
-    </>
-  )
-
   return (
     <Section>
       <Grid as={FluidGrid} fluid>
@@ -57,13 +43,37 @@ const Playground: React.FC = () => {
             <Card as={Col} xs={12} md={7}>
               <S.InnerCard>
                 <Info onDrop={onDrop} showSettings={file} />
-                {!isMobile && file ? <ControlsComponent /> : null}
+                {!isMobile && file ? (
+                  <>
+                    <Controller
+                      kind={kind}
+                      rotation={rotation[activeRef]}
+                      scale={scale[activeRef]}
+                      onRotation={onRotation}
+                      onScale={onScale}
+                      onKind={onKind}
+                    />
+                    <Buttons onSave={onSave} />
+                  </>
+                ) : null}
               </S.InnerCard>
             </Card>
             <Card as={Col} xs={12} md={5}>
               <Sandbox file={file} stageRef={stageRef} />
+              {isMobile && file ? (
+                <>
+                  <Controller
+                    kind={kind}
+                    rotation={rotation[activeRef]}
+                    scale={scale[activeRef]}
+                    onRotation={onRotation}
+                    onScale={onScale}
+                    onKind={onKind}
+                  />
+                  <Buttons onSave={onSave} />
+                </>
+              ) : null}
             </Card>
-            {isMobile && file ? <ControlsComponent /> : null}
           </S.Wrapper>
         </S.Outer>
       </Grid>
