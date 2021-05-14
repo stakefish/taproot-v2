@@ -51,7 +51,7 @@ const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
       const data = await detectFace(stageRef?.current?.content)
       onAdd(ElementKind.Mask, data)
     } catch (error) {}
-  }, [stageRef, onAdd])
+  }, [stageRef])
 
   useEffect(() => {
     loadModels()
