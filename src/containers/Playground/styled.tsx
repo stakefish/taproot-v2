@@ -5,8 +5,8 @@ export const Wrapper = styled.div`
   display: flex;
   height: 100%;
   transform: translate3d(0, 0, 0);
-  padding: ${rem(54)} ${rem(40)};
-  padding: 3vw 2vw;
+  padding: ${rem(48)};
+  padding: 3vw;
 
   @media all and (max-width: 767px) {
     padding: 24px 20px 16px;
@@ -38,4 +38,16 @@ export const Outer = styled.div`
     height: auto;
     min-height: 0;
   }
+`
+
+export const InnerCard = styled.div`
+  width: ${rem(685)};
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 ${rem(65)};
+  padding: 0 3vw;
+`
+
+export const Buttons = styled.div`
+  margin-top: ${rem(24)};
 `

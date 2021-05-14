@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { rem } from "polished"
+import { rem, rgba } from "polished"
 
 export enum ButtonSize {
   Xs,
@@ -11,18 +11,20 @@ export enum ButtonSize {
 export enum ButtonColor {
   White,
   Gray,
-  Red,
+  Primary,
   Black,
+  Bordered,
 }
 
 export interface ButtonProps {
   $size?: ButtonSize
   $color?: ButtonColor
+  $block?: string | boolean | undefined
 }
 
 const Button = styled.button<ButtonProps>`
   display: inline-flex;
-  padding: ${rem(14)} ${rem(24)};
+  padding: ${rem(19)} ${rem(32)};
   border-radius: ${rem(16)};
   position: relative;
   letter-spacing: 0;
@@ -38,6 +40,11 @@ const Button = styled.button<ButtonProps>`
   appearance: none;
   cursor: pointer;
   outline: none !important;
+
+  svg {
+    height: ${rem(24)};
+    margin: ${rem(-7)} ${rem(12)} ${rem(-7)} ${rem(-10)};
+  }
 
   @media all and (max-width: 480px) {
     font-size: 11px;
@@ -56,7 +63,7 @@ const Button = styled.button<ButtonProps>`
     `}
 
   ${(props) =>
-    props.$color === ButtonColor.Red &&
+    props.$color === ButtonColor.Primary &&
     css`
       background-color: ${props.theme.colors.primary};
       color: ${props.theme.colors.white};
@@ -77,7 +84,7 @@ const Button = styled.button<ButtonProps>`
       }
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.$color === ButtonColor.Gray &&
     css`
       background-color: #f3f3f3;
@@ -85,6 +92,18 @@ const Button = styled.button<ButtonProps>`
 
       &:hover {
         background-color: #e5e5e5;
+      }
+    `}
+    
+  ${(props) =>
+    props.$color === ButtonColor.Bordered &&
+    css`
+      background-color: transparent;
+      color: ${props.theme.colors.white};
+      box-shadow: inset 0 0 0 2px ${(props) => rgba(props.theme.colors.gray, 0.28)};
+
+      &:hover {
+        background-color: transparent;
       }
     `}
 
@@ -116,6 +135,12 @@ const Button = styled.button<ButtonProps>`
         font-size: 10px;
         padding: 9px 12px;
       }
+    `}
+
+  ${(props) =>
+    props.$block &&
+    css`
+      width: 100%;
     `}
 `
 

@@ -5,10 +5,6 @@ import { Row } from "react-styled-flexboxgrid"
 import Button from "../../components/Button"
 
 export const Wrapper = styled.div`
-  width: ${rem(645)};
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 ${rem(40)};
   text-align: center;
 
   ${Row} {
@@ -16,8 +12,7 @@ export const Wrapper = styled.div`
   }
 
   p {
-    font-size: ${(props) => rem(props.theme.fontSize.lead)};
-    margin-bottom: ${rem(28)};
+    margin-bottom: ${rem(17)};
   }
 
   @media all and (max-width: 480px) {
@@ -34,7 +29,6 @@ export const Wrapper = styled.div`
 `
 
 export const Links = styled.div`
-  padding-bottom: ${rem(10)};
   font-size: ${rem(16)};
   font-weight: 500;
 
@@ -89,8 +83,7 @@ export const Hint = styled.div`
 `
 
 export const UploadWrapper = styled.div`
-  padding: ${rem(20)};
-  height: ${rem(148)};
+  padding: ${rem(44)} 0;
   display: flex;
   align-items: center;
   justify-content: center;

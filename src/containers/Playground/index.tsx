@@ -5,10 +5,14 @@ import Info from "../Info"
 import Sandbox from "../Sandbox"
 import Controller from "../Controller"
 
+import { TWITTER_SHARING_URL } from "../../helpers/const"
+
 import Card from "../../components/Card"
+import Button, { ButtonColor } from "../../components/Button"
 import Section from "../../components/Section"
 import ManagerContext from "../../core/Manager"
 import { FluidGrid } from "../../core/GlobalStyles"
+import { IconShare, IconSave } from "../../icons"
 
 import * as S from "./styled"
 
@@ -27,8 +31,46 @@ const Playground: React.FC = () => {
         <S.Outer>
           <S.Wrapper as={Row} middle="md">
             <Card as={Col} xs={12} md={7}>
-              <Info onDrop={onDrop} showSettings={file} />
-              {file && <Controller rotation={rotation} scale={scale} onRotation={setRotation} onScale={setScale} />}
+              <S.InnerCard>
+                <Info onDrop={onDrop} showSettings={file} />
+                {file && (
+                  <>
+                    <Controller rotation={rotation} scale={scale} onRotation={setRotation} onScale={setScale} />
+                    <S.Buttons>
+                      <Row middle="sm" between="sm">
+                        <Col xs={12} sm={4}>
+                          <Button $color={ButtonColor.Bordered} $block>
+                            Add mask
+                          </Button>
+                        </Col>
+                        <Col xs={12} sm={8}>
+                          <Row>
+                            <Col xs={12} sm={7}>
+                              <Button $color={ButtonColor.Primary} $block>
+                                <IconSave />
+                                Download
+                              </Button>
+                            </Col>
+                            <Col xs={12} sm={5}>
+                              <Button
+                                $block
+                                $color={ButtonColor.Primary}
+                                as="a"
+                                target="_blank"
+                                rel="noreferrer"
+                                href={TWITTER_SHARING_URL}
+                              >
+                                <IconShare />
+                                Share
+                              </Button>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </S.Buttons>
+                  </>
+                )}
+              </S.InnerCard>
             </Card>
             <Card as={Col} xs={12} md={5}>
               <Sandbox file={file} />

@@ -1,10 +1,15 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { rem, rgba } from "polished"
 import Button from "../../components/Button"
 
 export const Wrapper = styled.div`
+  position: relative;
+  border-radius: ${rem(32)};
+  padding: ${rem(52)} ${rem(32)} ${rem(32)};
+  border: solid 2px ${(props) => rgba(props.theme.colors.gray, 0.28)};
+
   [data-reach-slider-input][data-orientation="horizontal"] {
-    height: 2px;
+    height: 4px;
   }
 
   [data-reach-slider-marker][data-orientation="horizontal"] {
@@ -13,49 +18,10 @@ export const Wrapper = styled.div`
     background-color: transparent;
     cursor: pointer;
     margin: 0;
-
-    &:before {
-      content: "";
-      position: absolute;
-      height: 2px;
-      width: ${rem(60)};
-      left: 50%;
-      top: 50%;
-      z-index: -1;
-      margin: 0;
-      transform: translate3d(-50%, -50%, 0);
-      backface-visibility: hidden;
-      background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 212, 255, 0) 100%);
-      transition: all ${(props) => props.theme.transition.base};
-    }
   }
 
   [data-reach-slider-track] {
-    background-color: ${(props) => rgba(props.theme.colors.white, 0.16)};
-
-    &[data-orientation="horizontal"] {
-      &::after,
-      &::before {
-        content: "";
-        width: ${rem(15)};
-        height: ${rem(20)};
-        top: ${rem(-10)};
-        z-index: 1;
-        position: absolute;
-        background-color: ${(props) => props.theme.colors.white};
-      }
-
-      &::before {
-        left: auto;
-        right: 100%;
-      }
-
-      &::after {
-        content: "";
-        left: 100%;
-        right: auto;
-      }
-    }
+    background-color: ${(props) => rgba(props.theme.colors.gray, 0.28)};
   }
 
   [data-reach-slider-handle] {
@@ -63,27 +29,20 @@ export const Wrapper = styled.div`
     height: 14px;
     outline: none;
     border: 0;
-    box-shadow: 0 0 0 ${rem(2)} ${(props) => props.theme.colors.dark};
-    background-color: ${(props) => props.theme.colors.white};
+    box-shadow: 0 0 0 ${rem(4)} ${(props) => props.theme.colors.dark};
+    background-color: ${(props) => props.theme.colors.primary};
     transition: box-shadow ${(props) => props.theme.transition.base};
     cursor: pointer;
     z-index: 10;
 
     &:hover,
     &:active {
-      box-shadow: 0 0 0 ${rem(2)} ${(props) => props.theme.colors.primary};
-
-      ~ [data-reach-slider-marker][data-orientation="horizontal"] {
-        &:before {
-          width: ${rem(80)};
-          background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0%, rgba(255, 0, 0, 1) 50%, rgba(0, 212, 255, 0) 100%);
-        }
-      }
+      box-shadow: 0 0 0 ${rem(5)} ${(props) => props.theme.colors.dark};
     }
   }
 
   [data-reach-slider-range] {
-    background-color: ${(props) => rgba(props.theme.colors.dark, 0.16)};
+    background-color: ${(props) => rgba(props.theme.colors.primary, 1)};
   }
 
   @media all and (max-width: 767px) {
@@ -116,24 +75,26 @@ export const Wrapper = styled.div`
 `
 
 export const SliderInfo = styled.div`
-  margin-bottom: ${rem(14)};
+  margin-bottom: ${rem(22)};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: ${rem(10)};
 
   h4 {
     margin-bottom: 0;
     font-size: inherit;
-    font-weight: ${(props) => props.theme.fontWeight.bold};
-    letter-spacing: ${rem(2.5)};
-    text-transform: uppercase;
-    color: ${(props) => props.theme.colors.primary};
+    font-weight: ${(props) => props.theme.fontWeight.medium};
+    color: ${(props) => props.theme.colors.white};
+    display: flex;
+    align-items: center;
+  }
+
+  svg {
+    height: ${rem(16)};
   }
 
   span {
-    font-weight: ${(props) => props.theme.fontWeight.semibold};
-    color: ${(props) => props.theme.colors.dark};
+    font-weight: ${(props) => props.theme.fontWeight.medium};
   }
 
   @media all and (max-width: 767px) {
@@ -154,7 +115,50 @@ export const Group = styled.div`
 
 export const Inner = styled.div`
   overflow: hidden;
-  padding: ${rem(14)} ${rem(14)};
   width: 100%;
   height: 100%;
+`
+
+export const Switcher = styled.div`
+  padding: 4px;
+  border-radius: ${rem(20)};
+  background-color: #000000;
+  width: ${rem(286)};
+  height: ${rem(56)};
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  display: flex;
+`
+
+export const SwitcherButton = styled.button<{ $active?: boolean }>`
+  appearance: none;
+  border: 0;
+  background-color: transparent;
+  border-radius: ${rem(16)};
+  flex: 0 0 50%;
+  color: ${(props) => props.theme.colors.gray};
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+
+  svg {
+    height: ${rem(36)};
+    position: relative;
+    top: -1px;
+    margin-left: ${rem(-10)};
+    color: ${(props) => props.theme.colors.primary};
+  }
+
+  ${(props) =>
+    props.$active &&
+    css`
+      background-color: ${rgba(props.theme.colors.gray, 0.4)};
+      color: ${props.theme.colors.white};
+    `};
 `

@@ -10,7 +10,7 @@ export const GlobalStyles = createGlobalStyle`
       font-size: 20px;
     }
 
-    @media all and (min-width: 1600px) {
+    @media all and (min-width: 2800px) {
       font-size: 22px;
     }
 
@@ -48,7 +48,6 @@ export const GlobalStyles = createGlobalStyle`
 
   h1, h2, h3, h4, h5 {
     margin-top: 0;
-    font-family: ${(props) => props.theme.font.headings};
   }
 
   a {
@@ -66,8 +65,12 @@ export const GlobalStyles = createGlobalStyle`
     margin-bottom: ${rem(10)};
     font-weight: ${(props) => props.theme.fontWeight.extrabold};
     font-size: ${(props) => rem(props.theme.fontSize.h1)};
-    color:  ${(props) => props.theme.colors.primary};
+    font-size: 3.2vw;
     text-transform: uppercase;
+    line-height: 1.2;
+    white-space: nowrap;
+    color:  ${(props) => props.theme.colors.primary};
+    font-family: ${(props) => props.theme.font.headings};
 
     @media all and (max-width: 767px) {
       font-size: 24px;

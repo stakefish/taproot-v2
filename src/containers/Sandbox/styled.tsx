@@ -45,6 +45,11 @@ export const Wrapper = styled.div<WrapperProps>`
     border-radius: ${rem(24)};
   }
 
+  @media all and (min-width: 1600px) {
+    max-width: ${rem(477)};
+    margin-left: auto;
+  }
+
   .konvajs-content {
     min-width: 540px;
     min-height: 415px;
