@@ -34,7 +34,7 @@ const Playground: React.FC = () => {
       download(stageRef.current.toDataURL())
     }
   }
-        
+
   const SandboxComponent = () => <Sandbox file={file} stageRef={stageRef} />
 
   return (
@@ -46,6 +46,7 @@ const Playground: React.FC = () => {
               <S.InnerCard>
                 <Info onDrop={onDrop} showSettings={file} />
                 {isMobile && <SandboxComponent />}
+                {file ? (
                   <>
                     <Controller
                       kind={kind}
