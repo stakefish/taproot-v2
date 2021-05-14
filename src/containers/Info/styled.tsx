@@ -88,6 +88,7 @@ export const UploadWrapper = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-bottom: 20px;
 
   ${Button} {
     max-width: 100%;
@@ -95,6 +96,8 @@ export const UploadWrapper = styled.div`
   }
 
   @media all and (min-width: 768px) {
+    margin-bottom: 0;
+
     input {
       display: block !important;
       opacity: 0;

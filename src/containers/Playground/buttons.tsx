@@ -30,13 +30,13 @@ const Buttons: React.FC<Props> = ({ onSave }: Props) => {
         </Col>
         <Col xs={12} sm={8}>
           <Row>
-            <Col xs={12} sm={7}>
+            <Col xs={6} sm={7}>
               <Button $color={ButtonColor.Primary} $block onClick={onSave}>
                 <IconSave />
                 Download
               </Button>
             </Col>
-            <Col xs={12} sm={5}>
+            <Col xs={6} sm={5}>
               <Button
                 $block
                 $color={ButtonColor.Primary}

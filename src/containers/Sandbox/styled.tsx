@@ -46,7 +46,6 @@ export const Wrapper = styled.div<WrapperProps>`
   }
 
   @media all and (min-width: 1600px) {
-    max-width: ${rem(477)};
     margin-left: auto;
   }
 

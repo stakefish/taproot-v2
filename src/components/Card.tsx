@@ -16,14 +16,6 @@ const Card = styled.div<CardProps>`
   @media all and (max-width: 480px) {
     min-height: 0;
     height: auto;
-
-    &:first-child {
-      margin-bottom: 30px;
-
-      @media all and (min-width: 481px) {
-        height: 400px;
-      }
-    }
   }
 `
 
