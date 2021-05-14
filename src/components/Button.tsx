@@ -25,7 +25,7 @@ export interface ButtonProps {
 const Button = styled.button<ButtonProps>`
   display: inline-flex;
   padding: ${rem(19)} ${rem(32)};
-  border-radius: ${rem(16)};
+  border-radius: ${rem(20)};
   position: relative;
   letter-spacing: 0;
   line-height: 1;
