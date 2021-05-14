@@ -50,4 +50,14 @@ export const InnerCard = styled.div`
 
 export const Buttons = styled.div`
   margin-top: ${rem(24)};
+
+  @media all and (max-width: 767px) {
+    margin-top: 4px;
+    margin-bottom: -20px;
+
+    button,
+    a {
+      margin-bottom: 20px;
+    }
+  }
 `

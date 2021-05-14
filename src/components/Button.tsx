@@ -47,7 +47,7 @@ const Button = styled.button<ButtonProps>`
   }
 
   @media all and (max-width: 480px) {
-    font-size: 11px;
+    font-size: 12px;
     padding: 9px 12px;
   }
 
@@ -100,7 +100,7 @@ const Button = styled.button<ButtonProps>`
     css`
       background-color: transparent;
       color: ${props.theme.colors.white};
-      box-shadow: inset 0 0 0 2px ${(props) => rgba(props.theme.colors.gray, 0.28)};
+      box-shadow: inset 0 0 0 ${rem(2)} ${(props) => rgba(props.theme.colors.gray, 0.28)};
 
       &:hover {
         background-color: transparent;
@@ -119,8 +119,16 @@ const Button = styled.button<ButtonProps>`
       }
 
       @media all and (max-width: 480px) {
-        font-size: 8px;
-        padding: 12px 20px;
+        font-size: 14px;
+        padding: 10px 20px;
+
+        svg {
+          position: absolute;
+          left: 2px;
+          top: 1px;
+          height: 32px;
+          margin: 0;
+        }
       }
     `}
 

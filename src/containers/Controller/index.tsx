@@ -26,11 +26,11 @@ const Controller: React.FC<Props> = ({ rotation, scale, onRotation, onScale }: P
   return (
     <S.Wrapper>
       <S.Switcher>
-        <S.SwitcherButton $active>
+        <S.SwitcherButton $active value="mask">
           <IconMaskA />
           Mask
         </S.SwitcherButton>
-        <S.SwitcherButton>
+        <S.SwitcherButton value="block">
           <IconMaskB />
           Block
         </S.SwitcherButton>

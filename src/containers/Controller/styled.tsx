@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   position: relative;
   border-radius: ${rem(32)};
   padding: ${rem(52)} ${rem(32)} ${rem(32)};
-  border: solid 2px ${(props) => rgba(props.theme.colors.gray, 0.28)};
+  border: solid ${rem(2)} ${(props) => rgba(props.theme.colors.gray, 0.28)};
 
   [data-reach-slider-input][data-orientation="horizontal"] {
     height: 4px;
@@ -45,8 +45,8 @@ export const Wrapper = styled.div`
     background-color: ${(props) => rgba(props.theme.colors.primary, 1)};
   }
 
-  @media all and (max-width: 767px) {
-    width: 90%;
+  @media all and (max-width: 991px) {
+    margin-top: 32px;
   }
 
   @media all and (max-width: 480px) {

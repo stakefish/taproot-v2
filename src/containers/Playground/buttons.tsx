@@ -19,13 +19,13 @@ const Buttons: React.FC = () => {
         </Col>
         <Col xs={12} sm={8}>
           <Row>
-            <Col xs={12} sm={7}>
+            <Col xs={6} sm={7}>
               <Button $color={ButtonColor.Primary} $block>
                 <IconSave />
                 Download
               </Button>
             </Col>
-            <Col xs={12} sm={5}>
+            <Col xs={6} sm={5}>
               <Button
                 $block
                 $color={ButtonColor.Primary}

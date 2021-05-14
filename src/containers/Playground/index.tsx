@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react"
 import { Grid, Row, Col } from "react-styled-flexboxgrid"
+import { useMediaQuery } from "react-responsive"
 
 import Info from "../Info"
 import Sandbox from "../Sandbox"
@@ -18,9 +19,13 @@ const Playground: React.FC = () => {
 
   const { rotation, scale, setRotation, setScale } = useContext(ManagerContext)
 
+  const isMobile = useMediaQuery({ maxWidth: 1023 })
+
   const onDrop = ([file]: File[]) => {
     setFile(URL.createObjectURL(file))
   }
+
+  const SandboxComponent = () => <Sandbox file={file} />
 
   return (
     <Section>
@@ -32,15 +37,18 @@ const Playground: React.FC = () => {
                 <Info onDrop={onDrop} showSettings={file} />
                 {file && (
                   <>
+                    {isMobile && <SandboxComponent />}
                     <Controller rotation={rotation} scale={scale} onRotation={setRotation} onScale={setScale} />
                     <Buttons />
                   </>
                 )}
               </S.InnerCard>
             </Card>
-            <Card as={Col} xs={12} md={5}>
-              <Sandbox file={file} />
-            </Card>
+            {!isMobile && (
+              <Card as={Col} xs={12} md={5}>
+                <SandboxComponent />
+              </Card>
+            )}
           </S.Wrapper>
         </S.Outer>
       </Grid>
