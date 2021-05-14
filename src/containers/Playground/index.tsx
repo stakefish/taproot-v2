@@ -1,6 +1,8 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useRef, useState } from "react"
 import { Grid, Row, Col } from "react-styled-flexboxgrid"
 import { useMediaQuery } from "react-responsive"
+
+import { download } from "../../helpers/utils"
 
 import Info from "../Info"
 import Sandbox from "../Sandbox"
@@ -15,9 +17,11 @@ import { FluidGrid } from "../../core/GlobalStyles"
 import * as S from "./styled"
 
 const Playground: React.FC = () => {
+  const stageRef = useRef<any>(null)
+
   const [file, setFile] = useState<string | undefined>()
 
-  const { rotation, scale, setRotation, setScale } = useContext(ManagerContext)
+  const { kind, rotation, scale, activeRef, onRotation, onScale, onKind } = useContext(ManagerContext)
 
   const isMobile = useMediaQuery({ maxWidth: 1023 })
 
@@ -25,7 +29,13 @@ const Playground: React.FC = () => {
     setFile(URL.createObjectURL(file))
   }
 
-  const SandboxComponent = () => <Sandbox file={file} />
+  const onSave = () => {
+    if (stageRef?.current) {
+      download(stageRef.current.toDataURL())
+    }
+  }
+        
+  const SandboxComponent = () => <Sandbox file={file} stageRef={stageRef} />
 
   return (
     <Section>
@@ -36,12 +46,18 @@ const Playground: React.FC = () => {
               <S.InnerCard>
                 <Info onDrop={onDrop} showSettings={file} />
                 {isMobile && <SandboxComponent />}
-                {file && (
                   <>
-                    <Controller rotation={rotation} scale={scale} onRotation={setRotation} onScale={setScale} />
-                    <Buttons />
+                    <Controller
+                      kind={kind}
+                      rotation={rotation[activeRef]}
+                      scale={scale[activeRef]}
+                      onRotation={onRotation}
+                      onScale={onScale}
+                      onKind={onKind}
+                    />
+                    <Buttons onSave={onSave} />
                   </>
-                )}
+                ) : null}
               </S.InnerCard>
             </Card>
             {!isMobile && (

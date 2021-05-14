@@ -47,6 +47,7 @@ export const SOCIAL_LINKS = [
 // === MASK CONFIG ===
 export const FILE_NAME = "optimistic-mask.png" // name for downloaded image
 export const MASK = "/static/images/mask.svg"
+export const SQUARE = "/static/images/green-square.png"
 export const DEFAULT_IMAGE = "/static/images/default.png"
 
 export const DEFAULT_COORDS = {
@@ -58,6 +59,7 @@ export const STAGE_WIDTH = 500
 export const STAGE_HEIGHT = 520
 
 export const SCALE_FACTOR = 2
+export const SCALE_DEFAULT = 1
 
 export const CONTROLLER_ROTATION = 0
 export const CONTROLLER_ROTATION_MIN = -180
@@ -71,6 +73,10 @@ export const CONTROLLER_SIZE_STEP = 0.01
 export const MASK_WIDTH = 200
 export const MASK_HEIGHT = 100
 
+export const SQUARE_WIDTH = 160
+export const SQUARE_HEIGHT = 160
+
 export const ONE_RADIAN_IN_DEGREES = 180 / Math.PI
 
 export const RENDER_TIME = 250
+export const ACTIVE_REF_DEFAULT = 0
