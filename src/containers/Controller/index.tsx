@@ -3,6 +3,8 @@ import { Vector2d } from "konva/types/types"
 import { SliderInput, SliderTrack, SliderRange, SliderHandle, SliderMarker } from "@reach/slider"
 import { Row, Col } from "react-styled-flexboxgrid"
 
+import { ElementKind } from "../../helpers/types"
+
 import { IconSize, IconAngle, IconMaskA, IconMaskB } from "../../icons"
 
 import {
@@ -16,21 +18,23 @@ import {
 import * as S from "./styled"
 
 interface Props {
+  kind: ElementKind
   rotation: number
   scale: Vector2d
   onScale: (size: Vector2d) => void
   onRotation: (angle: number) => void
+  onKind: (nextKind: ElementKind) => void
 }
 
-const Controller: React.FC<Props> = ({ rotation, scale, onRotation, onScale }: Props) => {
+const Controller: React.FC<Props> = ({ kind, rotation, scale, onKind, onRotation, onScale }: Props) => {
   return (
     <S.Wrapper>
       <S.Switcher>
-        <S.SwitcherButton $active>
+        <S.SwitcherButton $active={kind === ElementKind.Mask} onClick={() => onKind(ElementKind.Mask)}>
           <IconMaskA />
           Mask
         </S.SwitcherButton>
-        <S.SwitcherButton>
+        <S.SwitcherButton $active={kind === ElementKind.Square} onClick={() => onKind(ElementKind.Square)}>
           <IconMaskB />
           Block
         </S.SwitcherButton>

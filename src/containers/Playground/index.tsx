@@ -20,7 +20,7 @@ const Playground: React.FC = () => {
 
   const [file, setFile] = useState<string | undefined>()
 
-  const { rotation, scale, setRotation, setScale } = useContext(ManagerContext)
+  const { kind, rotation, scale, activeRef, onRotation, onScale, onKind } = useContext(ManagerContext)
 
   const onDrop = ([file]: File[]) => {
     setFile(URL.createObjectURL(file))
@@ -40,12 +40,19 @@ const Playground: React.FC = () => {
             <Card as={Col} xs={12} md={7}>
               <S.InnerCard>
                 <Info onDrop={onDrop} showSettings={file} />
-                {file && (
+                {file ? (
                   <>
-                    <Controller rotation={rotation} scale={scale} onRotation={setRotation} onScale={setScale} />
+                    <Controller
+                      kind={kind}
+                      rotation={rotation[activeRef]}
+                      scale={scale[activeRef]}
+                      onRotation={onRotation}
+                      onScale={onScale}
+                      onKind={onKind}
+                    />
                     <Buttons onSave={onSave} />
                   </>
-                )}
+                ) : null}
               </S.InnerCard>
             </Card>
             <Card as={Col} xs={12} md={5}>
