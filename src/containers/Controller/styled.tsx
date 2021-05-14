@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components"
 import { rem, rgba } from "polished"
-import Button from "../../components/Button"
 
 export const Wrapper = styled.div`
   position: relative;
@@ -45,32 +44,12 @@ export const Wrapper = styled.div`
     background-color: ${(props) => rgba(props.theme.colors.primary, 1)};
   }
 
-  @media all and (max-width: 991px) {
-    margin-top: 32px;
+  @media all and (max-width: 767px) {
+    padding: 35px 16px 10px;
   }
 
-  @media all and (max-width: 480px) {
-    [data-reach-slider-input] {
-      position: absolute;
-      left: 60px;
-      right: 40px;
-      top: 8px;
-    }
-
-    ${Button} {
-      margin-top: 0;
-    }
-
-    [data-reach-slider-track] {
-      background-color: ${(props) => rgba(props.theme.colors.dark, 0.16)};
-
-      &[data-orientation="horizontal"] {
-        &::after,
-        &::before {
-          width: 30px;
-        }
-      }
-    }
+  @media all and (max-width: 991px) {
+    margin-top: 32px;
   }
 `
 
@@ -111,6 +90,10 @@ export const SliderInfo = styled.div`
 export const Group = styled.div`
   padding-bottom: ${rem(14)};
   position: relative;
+
+  @media all and (max-width: 767px) {
+    margin-bottom: 10px;
+  }
 `
 
 export const Inner = styled.div`

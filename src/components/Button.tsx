@@ -48,7 +48,7 @@ const Button = styled.button<ButtonProps>`
 
   @media all and (max-width: 480px) {
     font-size: 12px;
-    padding: 9px 12px;
+    padding: 12px;
   }
 
   ${(props) =>
@@ -120,7 +120,7 @@ const Button = styled.button<ButtonProps>`
 
       @media all and (max-width: 480px) {
         font-size: 14px;
-        padding: 10px 20px;
+        padding: 11px 20px;
 
         svg {
           position: absolute;

@@ -35,9 +35,9 @@ const Playground: React.FC = () => {
             <Card as={Col} xs={12} md={7}>
               <S.InnerCard>
                 <Info onDrop={onDrop} showSettings={file} />
+                {isMobile && <SandboxComponent />}
                 {file && (
                   <>
-                    {isMobile && <SandboxComponent />}
                     <Controller rotation={rotation} scale={scale} onRotation={setRotation} onScale={setScale} />
                     <Buttons />
                   </>
