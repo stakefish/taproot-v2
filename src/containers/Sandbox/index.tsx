@@ -54,6 +54,7 @@ const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
       const data = await detectFace(stageRef?.current?.content)
       onAdd(ElementKind.Mask, data)
     } catch (error) {}
+    // eslint-disable-next-line
   }, [stageRef])
 
   useEffect(() => {
