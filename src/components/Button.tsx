@@ -103,7 +103,7 @@ const Button = styled.button<ButtonProps>`
       box-shadow: inset 0 0 0 ${rem(2)} ${(props) => rgba(props.theme.colors.gray, 0.28)};
 
       &:hover {
-        background-color: transparent;
+        background-color: ${(props) => rgba(props.theme.colors.gray, 0.11)};
       }
     `}
 

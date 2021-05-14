@@ -46,6 +46,10 @@ export const InnerCard = styled.div`
   margin: 0 auto;
   padding: 0 ${rem(65)};
   padding: 0 3vw;
+
+  @media all and (max-width: 767px) {
+    width: 100%;
+  }
 `
 
 export const Buttons = styled.div`
