@@ -1,56 +1,62 @@
 import styled from "styled-components"
 import { rem } from "polished"
 
-import Card from "../../components/Card"
-
 export const Wrapper = styled.div`
   display: flex;
-  flex-wrap: nowrap;
+  height: 100%;
   transform: translate3d(0, 0, 0);
-  background-color: ${(props) => props.theme.colors.odd};
+  padding: ${rem(48)};
+  padding: 3vw;
 
-  ${Card} {
-    flex-basis: 0;
-    flex-grow: 1;
-    max-width: 100%;
-    height: 100%;
-    flex: 0 0 50%;
-
-    &:first-child {
-      padding: 0;
-    }
-  }
-
-  @media all and (max-width: 1024px) {
-    min-height: ${rem(480)};
+  @media all and (max-width: 767px) {
+    padding: 24px 20px 16px;
   }
 
   @media all and (max-width: 767px) {
-    height: auto;
-    min-height: 0;
-    flex-wrap: wrap;
-    flex-direction: column-reverse;
-    background-color: ${(props) => props.theme.colors.white};
-
-    ${Card} {
-      flex: 0 0 100%;
-      height: auto;
-      background-color: ${(props) => props.theme.colors.odd};
-
-      &:first-child {
-        margin-bottom: 30px;
-        background-color: ${(props) => props.theme.colors.white};
-
-        @media all and (min-width: 481px) {
-          height: 400px;
-        }
-      }
-    }
   }
+`
 
-  @media all and (max-width: 480px) {
-    ${Card} {
-      min-height: 0;
+export const Outer = styled.div`
+  border-radius: ${rem(40)};
+  border-style: solid;
+  border-width: 3px;
+  border-image-source: linear-gradient(142deg, #31be37 2%, #252628 29%);
+  border-image-slice: 1;
+  background-image: linear-gradient(to bottom, #252628, #252628), linear-gradient(142deg, #31be37 2%, #252628 29%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  min-height: ${rem(500)};
+
+  @media all and (max-width: 767px) {
+    min-height: ${rem(480)};
+  }
+`
+
+export const InnerCard = styled.div`
+  width: ${rem(685)};
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 ${rem(65)};
+  padding: 0 3vw;
+
+  @media all and (max-width: 767px) {
+    width: 100%;
+  }
+`
+
+export const Buttons = styled.div`
+  margin-top: ${rem(24)};
+
+  @media all and (max-width: 767px) {
+    margin-top: 4px;
+    margin-bottom: -20px;
+
+    button,
+    a {
+      margin-bottom: 20px;
     }
   }
 `

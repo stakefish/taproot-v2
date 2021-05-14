@@ -1,4 +1,4 @@
-import { createGlobalStyle, keyframes } from "styled-components"
+import styled, { createGlobalStyle, keyframes } from "styled-components"
 import { normalize, rem } from "polished"
 
 export const GlobalStyles = createGlobalStyle`
@@ -12,6 +12,10 @@ export const GlobalStyles = createGlobalStyle`
 
     @media all and (min-width: 1600px) {
       font-size: 22px;
+    }
+
+    @media all and (min-width: 2305px) {
+      font-size: 26px;
     }
 
     @media all and (max-width: 1040px), (min-width: 1441px) and (max-height: 1040px) {
@@ -37,8 +41,8 @@ export const GlobalStyles = createGlobalStyle`
     letter-spacing: normal;
     font-size: ${(props) => rem(props.theme.fontSize.base)};
     font-family: ${(props) => props.theme.font.base};
-    color: ${(props) => props.theme.colors.black};
-    background-color: ${(props) => props.theme.colors.white};
+    color: ${(props) => props.theme.colors.gray};
+    background-color: ${(props) => props.theme.colors.background};
     direction: ltr;
     overscroll-behavior: none;
     -moz-osx-font-smoothing: grayscale;
@@ -63,9 +67,12 @@ export const GlobalStyles = createGlobalStyle`
 
   h1 {
     margin-bottom: ${rem(10)};
-    font-weight: ${(props) => props.theme.fontWeight.black};
+    font-weight: ${(props) => props.theme.fontWeight.extrabold};
     font-size: ${(props) => rem(props.theme.fontSize.h1)};
-    line-height: 1;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color:  ${(props) => props.theme.colors.primary};
+    font-family: ${(props) => props.theme.font.headings};
 
     @media all and (max-width: 767px) {
       font-size: 24px;
@@ -96,5 +103,17 @@ export const slideUpPopover = keyframes`
 
   100% {
     transform: translate3d(-50%, 0, 0);
+  }
+`
+
+export const FluidGrid = styled.div`
+  @media all and (min-width: 768px) {
+    padding-left: ${rem(65)} !important;
+    padding-right: ${rem(65)} !important;
+  }
+
+  @media all and (min-width: 1500px) {
+    padding-left: 8% !important;
+    padding-right: 8% !important;
   }
 `

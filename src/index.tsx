@@ -1,5 +1,6 @@
+import React from "react"
 import "@reach/slider/styles.css"
-
+import Helmet from "react-helmet"
 import ReactDOM from "react-dom"
 import Konva from "konva"
 
@@ -8,4 +9,13 @@ import { SCALE_FACTOR } from "./helpers/const"
 import App from "./core/App"
 
 Konva.pixelRatio = SCALE_FACTOR
-ReactDOM.render(<App />, document.getElementById("root"))
+ReactDOM.render(
+  <React.StrictMode>
+    <Helmet>
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    </Helmet>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+)

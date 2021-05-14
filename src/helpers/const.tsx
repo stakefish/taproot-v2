@@ -11,15 +11,19 @@ export const APP_DESCRIPTION =
   "Upload your photo, choose your mask, and download or share with the Twitter button. Signal your support for the Bitcoin network Taproot upgrade! With Taproot everyone wins: network throughput goes up and transactions become more private. We like Taproot."
 
 export const APP_LINKS = [
-  { href: "https://optimism.io/", title: "Optimistic rollups", icon: <IconInfo /> },
-  { href: "https://youtu.be/97DU_YgNPgE", title: "Video explainer", icon: <IconYoutube /> },
+  {
+    href: "https://bitcoincore.org/en/releases/0.21.1/#taproot-soft-fork",
+    title: "Taproot migration",
+    icon: <IconInfo />,
+  },
+  { href: "https://www.youtube.com/watch?v=KbF6daItSrw", title: "Video explainer", icon: <IconYoutube /> },
 ]
 
 export const TWITTER_SHARING_URL =
-  "https://twitter.com/intent/tweet?text=Layer%202%20is%20coming.%20Be%20ready%20for%20scaling%20through%20%23Optimism!&url=https%3A%2F%2Fimoptimistic.xyz&hashtags=Ethereum,Rollup,Layer2"
+  "https://twitter.com/intent/tweet?text=If%20your%20coin%20has%20a%20dev%20team%2C%20might%20as%20well%20use%20them%20right%3F%20%F0%9F%99%83%0A%0AGet%20your%20new%20prof%20pic%20flair%20here%20to%20signal%20support%20for%20the%20%23Bitcoin%20Taproot%20upgrade.%0A%0ABetter%20%23throughput.%20%E2%9C%85%20Better%20%23privacy.%20%E2%9C%85%20%23Taproot.%20%F0%9F%9F%A9%0A%0Ahttps%3A%2F%2Ftaproot.fish%0A"
 
 export const DISCLAIMER =
-  "stakefish & f2pool take privacy very seriously. The “OPTIMISM MASK” app is provided for fun and convenience. We never store photos, and do not transmit any data besides an anonymous identifier containing no personal information. We have also made the source code available in the event you would like to review it."
+  "We take privacy very seriously. The “TAPROOT MASK” app is provided for fun and convenience. We never store photos, and do not transmit any data besides an anonymous identifier containing no personal information. We have also made the source code available in the event you would like to review it."
 
 export const POWERED_BY = [
   { href: "https://stake.fish/", title: "stakefish" },
@@ -43,23 +47,25 @@ export const SOCIAL_LINKS = [
 // === MASK CONFIG ===
 export const FILE_NAME = "optimistic-mask.png" // name for downloaded image
 export const MASK = "/static/images/mask.svg"
+export const SQUARE = "/static/images/green-square.svg"
 export const DEFAULT_IMAGE = "/static/images/default.png"
 
 export const DEFAULT_COORDS = {
-  x: 260,
-  y: 160,
+  x: 110,
+  y: 180,
 }
 
 export const STAGE_WIDTH = 500
 export const STAGE_HEIGHT = 520
 
 export const SCALE_FACTOR = 2
+export const SCALE_DEFAULT = 1
 
 export const CONTROLLER_ROTATION = 0
 export const CONTROLLER_ROTATION_MIN = -180
 export const CONTROLLER_ROTATION_MAX = 180
 
-export const CONTROLLER_SIZE = 1
+export const CONTROLLER_SIZE = 1.5
 export const CONTROLLER_SIZE_MIN = 0
 export const CONTROLLER_SIZE_MAX = 2
 export const CONTROLLER_SIZE_STEP = 0.01
@@ -67,6 +73,10 @@ export const CONTROLLER_SIZE_STEP = 0.01
 export const MASK_WIDTH = 200
 export const MASK_HEIGHT = 100
 
+export const SQUARE_WIDTH = 160
+export const SQUARE_HEIGHT = 160
+
 export const ONE_RADIAN_IN_DEGREES = 180 / Math.PI
 
 export const RENDER_TIME = 250
+export const ACTIVE_REF_DEFAULT = 0
