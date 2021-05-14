@@ -53,7 +53,7 @@ export const angleBetweenPoints = (left: IPoint, right: IPoint) => {
 
 export const loadModels = async () => {
   try {
-    await Promise.all([nets.tinyFaceDetector.loadFromUri("/models"), nets.faceLandmark68Net.loadFromUri("/models")])
+    await Promise.all([nets.tinyFaceDetector.loadFromUri("models"), nets.faceLandmark68Net.loadFromUri("models")])
   } catch (error) {
     console.error(error)
   }

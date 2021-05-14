@@ -1,7 +1,7 @@
 import { IconInfo, IconYoutube, IconTelegram, IconInstagram, IconGithub, IconTwitter } from "../icons"
 
 // === ADD CONFIG ===
-export const LOGO = "/static/images/logo.svg"
+export const LOGO = "static/images/logo.svg"
 export const LOGO_NAME = "Taproot mask"
 export const LOGO_WIDTH = "42px"
 // to change app colors go to theme.ts
@@ -46,9 +46,9 @@ export const SOCIAL_LINKS = [
 
 // === MASK CONFIG ===
 export const FILE_NAME = "optimistic-mask.png" // name for downloaded image
-export const MASK = "/static/images/mask.svg"
-export const SQUARE = "/static/images/green-square.svg"
-export const DEFAULT_IMAGE = "/static/images/default.png"
+export const MASK = "static/images/mask.svg"
+export const SQUARE = "static/images/green-square.svg"
+export const DEFAULT_IMAGE = "static/images/default.png"
 
 export const DEFAULT_COORDS = {
   x: 110,
