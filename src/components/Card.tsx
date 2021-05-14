@@ -12,11 +12,6 @@ const Card = styled.div<CardProps>`
   &:first-child {
     height: auto;
   }
-
-  @media all and (max-width: 480px) {
-    min-height: 0;
-    height: auto;
-  }
 `
 
 export default Card

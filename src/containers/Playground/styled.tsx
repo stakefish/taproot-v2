@@ -33,11 +33,6 @@ export const Outer = styled.div`
   @media all and (max-width: 767px) {
     min-height: ${rem(480)};
   }
-
-  @media all and (max-width: 767px) {
-    height: auto;
-    min-height: 0;
-  }
 `
 
 export const InnerCard = styled.div`
