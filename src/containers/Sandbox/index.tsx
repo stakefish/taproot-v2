@@ -1,5 +1,6 @@
-import React, { useCallback, useContext, useEffect } from "react"
+import React, { useCallback, useContext, useEffect, useState } from "react"
 import { Stage, Layer } from "react-konva"
+import { isEmpty } from "ramda"
 
 import {
   MASK_HEIGHT,
@@ -22,7 +23,6 @@ import ManagerContext from "../../core/Manager"
 
 import * as S from "./styled"
 import { ElementKind } from "../../helpers/types"
-import { isEmpty } from "ramda"
 
 interface Props {
   file?: string
@@ -47,6 +47,11 @@ const SIZES = new Map<ElementKind, { width: number; height: number }>([
 ])
 
 const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
+  const [stageSize, setStageSize] = useState<{ width: number; height: number }>({
+    width: STAGE_WIDTH,
+    height: STAGE_HEIGHT,
+  })
+
   const { figures, rotation, scale, coordinates, onAdd, onDrag, onSelect } = useContext(ManagerContext)
 
   const onDetect = useCallback(async () => {
@@ -70,11 +75,31 @@ const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
   const defaultX = 220
   const defaultY = 210
 
+  useEffect(() => {
+    const resize = () => {
+      if (stageRef?.current) {
+        const containerWidth = stageRef.current?.content.offsetWidth
+        const scale = containerWidth / STAGE_WIDTH
+        const width = STAGE_WIDTH * scale
+        const height = STAGE_HEIGHT * scale
+
+        stageRef.current.width(width)
+        stageRef.current.height(height)
+        stageRef.current.scale({ x: scale, y: scale })
+        setStageSize({ width, height })
+        stageRef.current.draw()
+      }
+    }
+
+    window.addEventListener("resize", resize)
+    return () => window.removeEventListener("resize", resize)
+  }, [stageRef])
+
   return (
     <S.Wrapper preview={file} cursor={Cursor.Default}>
       <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT} ref={stageRef} className="stage">
         <Layer>
-          <Figure fit src={file || DEFAULT_IMAGE} />
+          <Figure fit src={file || DEFAULT_IMAGE} stageSize={stageSize} />
 
           {isEmpty(figures) ? (
             <Figure

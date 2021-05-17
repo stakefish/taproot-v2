@@ -4,14 +4,14 @@ import { nets, detectSingleFace, TinyFaceDetectorOptions, Point, IPoint } from "
 
 import { FILE_NAME, SCALE_FACTOR, STAGE_HEIGHT, STAGE_WIDTH, ONE_RADIAN_IN_DEGREES, CONTROLLER_ROTATION } from "./const"
 
-export const scaleFigure = (image?: HTMLImageElement) => {
-  if (isNil(image)) {
+export const scaleFigure = (image?: HTMLImageElement, stageSize?: { width: number; height: number }) => {
+  if (isNil(image) || isNil(stageSize)) {
     return null
   }
 
-  const ratio = Math.min(STAGE_WIDTH / image.width, STAGE_HEIGHT / image.height)
-  const x = STAGE_WIDTH / SCALE_FACTOR - (image.width / SCALE_FACTOR) * ratio
-  const y = STAGE_HEIGHT / SCALE_FACTOR - (image.height / SCALE_FACTOR) * ratio
+  const ratio = Math.min(stageSize.width / image.width, stageSize.height / image.height)
+  const x = stageSize.width / SCALE_FACTOR - (image.width / SCALE_FACTOR) * ratio
+  const y = stageSize.height / SCALE_FACTOR - (image.height / SCALE_FACTOR) * ratio
 
   const width = image.width * ratio
   const height = image.height * ratio

@@ -19,6 +19,7 @@ interface Props {
   scale?: Vector2d
   src?: string
   fit?: boolean
+  stageSize?: { width: number; height: number }
   draggable?: boolean
   onMouseEnter?: (event: KonvaEventObject<MouseEvent>) => void
   onMouseLeave?: (event: KonvaEventObject<MouseEvent>) => void
@@ -37,6 +38,7 @@ const Figure: React.FC<Props> = ({
   y,
   offsetX,
   offsetY,
+  stageSize,
   onMouseEnter,
   onMouseLeave,
   onMouseDown,
@@ -46,7 +48,7 @@ const Figure: React.FC<Props> = ({
 }: Props) => {
   const meta = useImage(src as string)
   const image = head(meta) as HTMLImageElement
-  const config = fit ? scaleFigure(image) : rest
+  const config = fit ? scaleFigure(image, stageSize) : rest
 
   return (
     <Image

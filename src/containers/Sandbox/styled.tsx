@@ -66,6 +66,8 @@ export const Wrapper = styled.div<WrapperProps>`
     }
 
     canvas {
+      width: 100% !important;
+      height: auto !important;
     }
   }
 `
