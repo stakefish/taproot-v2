@@ -47,15 +47,15 @@ const SIZES = new Map<ElementKind, { width: number; height: number }>([
 ])
 
 const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
+  const [ratio, setRatio] = useState<number>(1)
+  const [cursor, setCursor] = useState<Cursor>(Cursor.Default)
+
   const [stageSize, setStageSize] = useState<{ width: number; height: number }>({
     width: STAGE_WIDTH,
     height: STAGE_HEIGHT,
   })
 
-  const [ratio, setRatio] = useState<number>(1)
-  const [cursor, setCursor] = useState<Cursor>(Cursor.Default)
-
-  const { figures, rotation, scale, coordinates, onAdd, onDrag, onSelect } = useContext(ManagerContext)
+  const { figures, rotation, scale, coordinates, onAdd, onSelect } = useContext(ManagerContext)
 
   const onDetect = useCallback(async () => {
     try {
@@ -134,7 +134,7 @@ const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
                 y={coordinates[index]?.y}
                 offsetX={width / SCALE_FACTOR}
                 offsetY={height / SCALE_FACTOR}
-                onDragMove={onDrag}
+                // onDragMove={onDrag}
                 onMouseEnter={() => setCursor(Cursor.Grab)}
                 onMouseLeave={() => setCursor(Cursor.Default)}
                 onMouseDown={() => {
