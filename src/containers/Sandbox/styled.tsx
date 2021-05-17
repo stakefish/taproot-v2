@@ -45,30 +45,32 @@ export const Wrapper = styled.div<WrapperProps>`
     border-radius: ${rem(24)};
   }
 
-  @media all and (min-width: 1600px) {
-    margin-left: auto;
-  }
-
   .konvajs-content {
-    min-width: 540px;
-    min-height: 415px;
-
-    @media all and (min-width: 1025px) {
-      width: 100% !important;
-      height: 100% !important;
-    }
-
-    @media all and (max-width: 580px) {
-      // width: 280px !important;
-      // height: 280px !important;
-      min-width: 0;
-      min-height: 0;
-    }
-
-    canvas {
+    /* canvas {
       width: 100% !important;
       height: auto !important;
+    } 
+    
+    @media all and (min-width: 1281px) {
+      width: 100% !important;
+      height: 100% !important;
+    } */
+
+    @media all and (max-width: 580px) {
+      /* width: 100% !important;
+      height: 280px !important; 
+      min-width: 0;
+      min-height: 0;
+      height: auto !important;
+
+      canvas {
+        position: static !important;
+      } */
     }
+  }
+
+  @media all and (min-width: 1600px) {
+    margin-left: auto;
   }
 `
 
