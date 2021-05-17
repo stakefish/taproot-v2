@@ -19,7 +19,7 @@ export enum ButtonColor {
 export interface ButtonProps {
   $size?: ButtonSize
   $color?: ButtonColor
-  $block?: string | boolean | undefined
+  $block?: boolean
 }
 
 const Button = styled.button<ButtonProps>`
@@ -35,7 +35,8 @@ const Button = styled.button<ButtonProps>`
   text-align: center;
   font-size: ${(props) => rem(props.theme.fontSize.lead)};
   font-weight: ${(props) => props.theme.fontWeight.medium};
-  transition: background-color ${(props) => props.theme.transition.base};
+  transition: background-color ${(props) => props.theme.transition.base},
+    width ${(props) => props.theme.transition.base}, width ${(props) => props.theme.transition.base};
   appearance: none;
   cursor: pointer;
   outline: none !important;
@@ -126,7 +127,7 @@ const Button = styled.button<ButtonProps>`
         svg {
           position: absolute;
           left: 2px;
-          top: 1px;
+          top: 2px;
           height: 32px;
           margin: 0;
         }

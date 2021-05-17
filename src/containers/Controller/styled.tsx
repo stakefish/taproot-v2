@@ -129,6 +129,7 @@ export const SwitcherButton = styled.button<{ $active?: boolean }>`
   align-items: center;
   justify-content: center;
   font-weight: 500;
+  user-select: none;
 
   svg {
     height: ${rem(36)};
@@ -138,10 +139,14 @@ export const SwitcherButton = styled.button<{ $active?: boolean }>`
     color: ${(props) => props.theme.colors.primary};
   }
 
+  &:hover {
+    color: ${(props) => props.theme.colors.white};
+  }
+
   ${(props) =>
     props.$active &&
     css`
       background-color: ${rgba(props.theme.colors.gray, 0.4)};
       color: ${props.theme.colors.white};
-    `};
+    `}
 `

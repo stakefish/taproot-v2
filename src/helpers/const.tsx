@@ -41,7 +41,7 @@ export const SOCIAL_LINKS = [
       { name: "stakefish", url: "https://twitter.com/stakefish" },
     ],
   },
-  { href: "https://github.com/stakefish/i-m-optimistic", title: "Github", icon: <IconGithub /> },
+  { href: "https://github.com/stakefish/taproot-v2", title: "Github", icon: <IconGithub /> },
 ]
 
 // === MASK CONFIG ===
