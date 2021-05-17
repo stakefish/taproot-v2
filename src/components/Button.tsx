@@ -23,8 +23,7 @@ export interface ButtonProps {
 }
 
 const Button = styled.button<ButtonProps>`
-  display: inline-flex;
-  padding: ${rem(19)} ${rem(32)};
+  padding: ${rem(19)} ${rem(18)};
   border-radius: ${rem(20)};
   position: relative;
   letter-spacing: 0;
@@ -40,15 +39,17 @@ const Button = styled.button<ButtonProps>`
   appearance: none;
   cursor: pointer;
   outline: none !important;
+  min-width: ${rem(60)};
 
   svg {
     height: ${rem(24)};
-    margin: ${rem(-7)} ${rem(12)} ${rem(-7)} ${rem(-10)};
+    margin: ${rem(-7)} ${rem(12)} ${rem(-7)} ${rem(-15)};
   }
 
   @media all and (max-width: 480px) {
     font-size: 12px;
     padding: 12px;
+    min-width: 40px;
   }
 
   ${(props) =>
