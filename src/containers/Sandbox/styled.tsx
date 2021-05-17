@@ -59,8 +59,8 @@ export const Wrapper = styled.div<WrapperProps>`
     }
 
     @media all and (max-width: 580px) {
-      width: 280px !important;
-      height: 280px !important;
+      // width: 280px !important;
+      // height: 280px !important;
       min-width: 0;
       min-height: 0;
     }
