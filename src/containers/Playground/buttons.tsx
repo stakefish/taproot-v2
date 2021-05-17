@@ -23,10 +23,20 @@ const Buttons: React.FC<Props> = ({ onSave }: Props) => {
   return (
     <S.Buttons>
       <Row middle="sm" between="sm">
-        <Col xs={12} sm={4}>
-          <Button $color={ButtonColor.Bordered} $block onClick={onClick}>
-            Add mask
-          </Button>
+        <Col xs={12} sm={3}>
+          <Row>
+            <Col xs={6}>
+              <Button $color={ButtonColor.Bordered} $block onClick={onClick}>
+                +
+              </Button>
+            </Col>
+            <Col xs={6}>
+              {/* TODO: delete mask */}
+              <Button $color={ButtonColor.Bordered} $block onClick={onClick}>
+                -
+              </Button>
+            </Col>
+          </Row>
         </Col>
         <Col xs={12} sm={8}>
           <Row>
