@@ -52,6 +52,9 @@ const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
     height: STAGE_HEIGHT,
   })
 
+  const [ratio, setRatio] = useState<number>(1)
+  const [cursor, setCursor] = useState<Cursor>(Cursor.Default)
+
   const { figures, rotation, scale, coordinates, onAdd, onDrag, onSelect } = useContext(ManagerContext)
 
   const onDetect = useCallback(async () => {
@@ -78,25 +81,24 @@ const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
   useEffect(() => {
     const resize = () => {
       if (stageRef?.current) {
-        const containerWidth = stageRef.current?.content.offsetWidth
+        const containerWidth = stageRef.current.content.offsetWidth
         const scale = containerWidth / STAGE_WIDTH
         const width = STAGE_WIDTH * scale
         const height = STAGE_HEIGHT * scale
 
         stageRef.current.width(width)
         stageRef.current.height(height)
-        stageRef.current.scale({ x: scale, y: scale })
+        setRatio(scale)
         setStageSize({ width, height })
         stageRef.current.draw()
       }
     }
 
-    window.addEventListener("resize", resize)
-    return () => window.removeEventListener("resize", resize)
+    resize()
   }, [stageRef])
 
   return (
-    <S.Wrapper preview={file} cursor={Cursor.Default}>
+    <S.Wrapper preview={file} cursor={cursor}>
       <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT} ref={stageRef} className="stage">
         <Layer>
           <Figure fit src={file || DEFAULT_IMAGE} stageSize={stageSize} />
@@ -105,11 +107,15 @@ const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
             <Figure
               draggable
               src={MASK}
-              x={defaultX}
-              y={defaultY}
+              x={defaultX * ratio}
+              y={defaultY * ratio}
               offsetX={MASK_WIDTH / SCALE_FACTOR}
               offsetY={MASK_HEIGHT / SCALE_FACTOR}
               scale={{ x: CONTROLLER_SIZE, y: CONTROLLER_SIZE }}
+              onMouseEnter={() => setCursor(Cursor.Grab)}
+              onMouseLeave={() => setCursor(Cursor.Default)}
+              onMouseDown={() => setCursor(Cursor.Grabbing)}
+              onMouseUp={() => setCursor(Cursor.Default)}
             />
           ) : null}
 
@@ -129,7 +135,13 @@ const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
                 offsetX={width / SCALE_FACTOR}
                 offsetY={height / SCALE_FACTOR}
                 onDragMove={onDrag}
-                onMouseDown={() => onSelect(index)}
+                onMouseEnter={() => setCursor(Cursor.Grab)}
+                onMouseLeave={() => setCursor(Cursor.Default)}
+                onMouseDown={() => {
+                  setCursor(Cursor.Grabbing)
+                  onSelect(index)
+                }}
+                onMouseUp={() => setCursor(Cursor.Default)}
               />
             )
           })}
