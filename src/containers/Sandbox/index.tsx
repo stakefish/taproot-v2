@@ -59,11 +59,11 @@ const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
 
   const onDetect = useCallback(async () => {
     try {
-      const data = await detectFace(stageRef?.current?.content)
+      const data = await detectFace(stageRef?.current?.content, stageSize)
       onAdd(ElementKind.Mask, data)
     } catch (error) {}
     // eslint-disable-next-line
-  }, [stageRef])
+  }, [stageRef, stageSize])
 
   useEffect(() => {
     loadModels()
@@ -134,12 +134,11 @@ const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
                 y={coordinates[index]?.y}
                 offsetX={width / SCALE_FACTOR}
                 offsetY={height / SCALE_FACTOR}
-                // onDragMove={onDrag}
                 onMouseEnter={() => setCursor(Cursor.Grab)}
                 onMouseLeave={() => setCursor(Cursor.Default)}
                 onMouseDown={() => {
-                  setCursor(Cursor.Grabbing)
                   onSelect(index)
+                  setCursor(Cursor.Grabbing)
                 }}
                 onMouseUp={() => setCursor(Cursor.Default)}
               />

@@ -2,7 +2,7 @@ import { isNil } from "ramda"
 
 import { nets, detectSingleFace, TinyFaceDetectorOptions, Point, IPoint } from "face-api.js"
 
-import { FILE_NAME, SCALE_FACTOR, STAGE_HEIGHT, STAGE_WIDTH, ONE_RADIAN_IN_DEGREES, CONTROLLER_ROTATION } from "./const"
+import { FILE_NAME, SCALE_FACTOR, ONE_RADIAN_IN_DEGREES, CONTROLLER_ROTATION } from "./const"
 
 export const scaleFigure = (image?: HTMLImageElement, stageSize?: { width: number; height: number }) => {
   if (isNil(image) || isNil(stageSize)) {
@@ -59,7 +59,7 @@ export const loadModels = async () => {
   }
 }
 
-export const detectFace = async (stage: any) => {
+export const detectFace = async (stage: any, stageSize: { width: number; height: number }) => {
   const face = stage.querySelector("canvas") as HTMLCanvasElement
   const detector = await detectSingleFace(face, new TinyFaceDetectorOptions()).withFaceLandmarks()
 
@@ -77,10 +77,17 @@ export const detectFace = async (stage: any) => {
     }
   }
 
+  console.log({
+    coordinates: {
+      x: stageSize.width / SCALE_FACTOR,
+      y: stageSize.height / SCALE_FACTOR,
+    },
+  })
+
   return {
     coordinates: {
-      x: STAGE_WIDTH / SCALE_FACTOR,
-      y: STAGE_HEIGHT / SCALE_FACTOR,
+      x: stageSize.width / SCALE_FACTOR,
+      y: stageSize.height / SCALE_FACTOR,
     },
     rotation: CONTROLLER_ROTATION,
   }

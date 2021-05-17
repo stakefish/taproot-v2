@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useCallback, useState } from "react"
 import { remove, update } from "ramda"
 import { Vector2d } from "konva/types/types"
 import { KonvaEventObject } from "konva/types/Node"
@@ -55,9 +55,12 @@ export const ManagerProvider: React.FC<Props> = ({ children }: Props) => {
     setScale((scale) => update(activeRef, nextScale, scale))
   }
 
-  const onRotation = (nextRotation: number) => {
-    setRotation((rotation) => update(activeRef, nextRotation, rotation))
-  }
+  const onRotation = useCallback(
+    (nextRotation: number) => {
+      setRotation((rotation) => update(activeRef, nextRotation, rotation))
+    },
+    [activeRef]
+  )
 
   const onDrag = (event: KonvaEventObject<DragEvent | TouchEvent>) => {
     setCoordinates((coordinates) => update(activeRef, { x: event?.target?.x(), y: event?.target?.y() }, coordinates))

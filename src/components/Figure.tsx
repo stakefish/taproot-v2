@@ -21,10 +21,10 @@ interface Props {
   fit?: boolean
   stageSize?: { width: number; height: number }
   draggable?: boolean
-  onMouseEnter?: (event: KonvaEventObject<MouseEvent>) => void
-  onMouseLeave?: (event: KonvaEventObject<MouseEvent>) => void
-  onMouseDown?: (event: KonvaEventObject<MouseEvent>) => void
-  onMouseUp?: (event: KonvaEventObject<MouseEvent>) => void
+  onMouseEnter?: (event: KonvaEventObject<MouseEvent | TouchEvent>) => void
+  onMouseLeave?: (event: KonvaEventObject<MouseEvent | TouchEvent>) => void
+  onMouseDown?: (event: KonvaEventObject<MouseEvent | TouchEvent>) => void
+  onMouseUp?: (event: KonvaEventObject<MouseEvent | TouchEvent>) => void
   onDragMove?: (event: KonvaEventObject<DragEvent | TouchEvent>) => void
 }
 
@@ -60,6 +60,9 @@ const Figure: React.FC<Props> = ({
       draggable={draggable}
       scale={scale}
       rotation={rotation}
+      onTouchStart={onMouseDown}
+      onTouchEnd={onMouseLeave}
+      onTouchMove={onDragMove}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onMouseDown={onMouseDown}
