@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Buttons: React.FC<Props> = ({ onSave }: Props) => {
-  const { kind, onAdd } = useContext(ManagerContext)
+  const { kind, onAdd, onRemove } = useContext(ManagerContext)
 
   const onClick = () => {
     onAdd(kind)
@@ -31,8 +31,7 @@ const Buttons: React.FC<Props> = ({ onSave }: Props) => {
               </Button>
             </Col>
             <Col xs={6}>
-              {/* TODO: delete mask */}
-              <Button $color={ButtonColor.Bordered} $block onClick={onClick}>
+              <Button $color={ButtonColor.Bordered} $block onClick={onRemove}>
                 -
               </Button>
             </Col>

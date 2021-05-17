@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { update } from "ramda"
+import { remove, update } from "ramda"
 import { Vector2d } from "konva/types/types"
 import { KonvaEventObject } from "konva/types/Node"
 
@@ -32,6 +32,7 @@ interface ContextType {
   onDrag: (event: KonvaEventObject<DragEvent | TouchEvent>) => void
   onAdd: (kind: ElementKind, meta?: any) => void
   onKind: (nextKind: ElementKind) => void
+  onRemove: () => void
   clear: () => void
 }
 
@@ -78,6 +79,17 @@ export const ManagerProvider: React.FC<Props> = ({ children }: Props) => {
     setScale((scale) => [...scale, { x: SCALE_DEFAULT, y: SCALE_DEFAULT }])
   }
 
+  const onRemove = () => {
+    const count = 1
+
+    if (figures.length > count) {
+      setFigures((figures) => remove(activeRef, count, figures))
+      setRotation((rotation) => remove(activeRef, count, rotation))
+      setCoordinates((coordinates) => remove(activeRef, count, coordinates))
+      setScale((scale) => remove(activeRef, count, scale))
+    }
+  }
+
   const clear = () => {
     setFigures([])
     setCoordinates([])
@@ -101,6 +113,7 @@ export const ManagerProvider: React.FC<Props> = ({ children }: Props) => {
         onAdd,
         onDrag,
         onKind,
+        onRemove,
         clear,
       }}
     >

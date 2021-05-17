@@ -47,11 +47,11 @@ const Controller: React.FC<Props> = ({ kind, rotation, scale, onKind, onRotation
                 <h4>
                   <IconSize /> Size
                 </h4>
-                <span>{(scale.x * 100).toFixed(0)}%</span>
+                {scale ? <span>{(scale.x * 100).toFixed(0)}%</span> : null}
               </S.SliderInfo>
 
               <SliderInput
-                value={scale.x}
+                value={scale?.x}
                 min={CONTROLLER_SIZE_MIN}
                 max={CONTROLLER_SIZE_MAX}
                 step={CONTROLLER_SIZE_STEP}
@@ -60,7 +60,7 @@ const Controller: React.FC<Props> = ({ kind, rotation, scale, onKind, onRotation
                 <SliderTrack>
                   <SliderRange />
                   <SliderHandle />
-                  <SliderMarker value={scale.x} />
+                  <SliderMarker value={scale?.x} />
                 </SliderTrack>
               </SliderInput>
             </S.Group>
@@ -71,7 +71,7 @@ const Controller: React.FC<Props> = ({ kind, rotation, scale, onKind, onRotation
                 <h4>
                   <IconAngle /> Angle
                 </h4>
-                <span>{rotation.toFixed(0)}°</span>
+                {rotation ? <span>{rotation.toFixed(0)}°</span> : null}
               </S.SliderInfo>
 
               <SliderInput
