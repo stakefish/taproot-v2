@@ -41,6 +41,7 @@ jobs:
         with:
           target_branch: gh-pages
           build_dir: build
+          fqdn: https://taproot.fish
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
