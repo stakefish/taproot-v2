@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { rem } from "polished"
 import { Row } from "react-styled-flexboxgrid"
 
@@ -82,7 +82,7 @@ export const Hint = styled.div`
   }
 `
 
-export const UploadWrapper = styled.div`
+export const UploadWrapper = styled.div<{ $expand: boolean }>`
   padding: ${rem(44)} 0;
   display: flex;
   align-items: center;
@@ -92,12 +92,18 @@ export const UploadWrapper = styled.div`
 
   ${Button} {
     max-width: 100%;
-    min-width: ${rem(205)};
+    width: ${rem(205)};
   }
 
-  @media all and (min-width: 768px) {
-    margin-bottom: 0;
+  ${(props) =>
+    props.$expand &&
+    css`
+      ${Button} {
+        width: ${rem(680)};
+      }
+    `}
 
+  @media all and (min-width: 768px) {
     input {
       display: block !important;
       opacity: 0;
@@ -125,14 +131,16 @@ export const UploadWrapper = styled.div`
   }
 `
 
-export const Logo = styled.div`
+export const Logo = styled.div<{ $hide: boolean }>`
   width: ${rem(64)};
   height: ${rem(64)};
   margin: ${rem(20)} auto;
-  border-radius: 4px;
+  border-radius: ${rem(4)};
   background-color: #31be37;
-  border-radius: 2px;
   position: relative;
+  will-change: height, margin, opacity;
+  transition: height ${(props) => props.theme.transition.base}, margin ${(props) => props.theme.transition.base},
+    opacity ${(props) => props.theme.transition.base};
 
   &:after {
     content: "";
@@ -141,7 +149,16 @@ export const Logo = styled.div`
     right: ${rem(5)};
     bottom: ${rem(18)};
     position: absolute;
-    border-radius: 2px;
+    border-radius: ${rem(2)};
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 1%, rgba(255, 255, 255, 0.01));
   }
+
+  ${(props) =>
+    props.$hide &&
+    css`
+      height: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      opacity: 0;
+    `}
 `

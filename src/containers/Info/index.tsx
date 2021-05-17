@@ -21,7 +21,7 @@ const Info: React.FC<Props> = ({ onDrop, showSettings }: Props) => {
     <S.Wrapper>
       <Row middle="xs" center="xs">
         <Col xs={12}>
-          {!showSettings && <S.Logo />}
+          <S.Logo $hide={Boolean(showSettings)} />
           <h1>{APP_TITLE}</h1>
           <p>{APP_DESCRIPTION}</p>
           <S.Links>
@@ -32,8 +32,8 @@ const Info: React.FC<Props> = ({ onDrop, showSettings }: Props) => {
               </a>
             ))}
           </S.Links>
-          <S.UploadWrapper>
-            <Button $color={ButtonColor.White} $size={ButtonSize.Lg} $block={showSettings} {...getRootProps()}>
+          <S.UploadWrapper $expand={Boolean(showSettings)}>
+            <Button $color={ButtonColor.White} $size={ButtonSize.Lg} {...getRootProps()}>
               <IconPhoto />
               Pick Photo
               <input {...getInputProps()} name="file" accept="image/*" />
