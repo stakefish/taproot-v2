@@ -2,7 +2,7 @@
   "name": "optimism-mask",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://stakefish.github.io/taproot-v2",
+  "homepage": "https://taproot.fish",
   "dependencies": {
     "@reach/slider": "^0.13.2",
     "@testing-library/jest-dom": "^5.11.4",
