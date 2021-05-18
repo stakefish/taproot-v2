@@ -46,26 +46,26 @@ export const Wrapper = styled.div<WrapperProps>`
   }
 
   .konvajs-content {
-    /* canvas {
+    width: 100% !important;
+
+    canvas {
       width: 100% !important;
-      height: auto !important;
-    } 
-    
+      height: 100% !important;
+      object-fit: cover;
+    }
+
     @media all and (min-width: 1281px) {
       width: 100% !important;
       height: 100% !important;
-    } */
+    }
 
-    @media all and (max-width: 580px) {
-      /* width: 100% !important;
-      height: 280px !important; 
-      min-width: 0;
-      min-height: 0;
+    @media all and (max-width: 991px) {
       height: auto !important;
 
       canvas {
         position: static !important;
-      } */
+        height: auto !important;
+      }
     }
   }
 
