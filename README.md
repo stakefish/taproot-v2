@@ -9,21 +9,21 @@ The “TAPROOT MASK” app is provided for fun and convenience. We never store p
 <tr>
     <td align="center">
         <a href="https://github.com/balajmarius">
-            <img src="https://avatars.githubusercontent.com/u/5159921?v=4" width="100" alt="balajmarius"/>
+            <img src="https://avatars.githubusercontent.com/u/5159921?v=4" width="100;" alt="balajmarius"/>
             <br />
             <sub><b>Balaj Marius</b></sub>
         </a>
     </td>
     <td align="center">
         <a href="https://github.com/apple-juice">
-            <img src="https://avatars.githubusercontent.com/u/2690724?v=4" width="100" alt="apple-juice"/>
+            <img src="https://avatars.githubusercontent.com/u/2690724?v=4" width="100;" alt="apple-juice"/>
             <br />
             <sub><b>Julia </b></sub>
         </a>
     </td>
     <td align="center">
         <a href="https://github.com/teddyknox">
-            <img src="https://avatars.githubusercontent.com/u/1178653?v=4" width="100" alt="teddyknox"/>
+            <img src="https://avatars.githubusercontent.com/u/1178653?v=4" width="100;" alt="teddyknox"/>
             <br />
             <sub><b>Teddy Knox</b></sub>
         </a>
