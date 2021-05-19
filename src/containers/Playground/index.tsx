@@ -32,7 +32,7 @@ const Playground: React.FC = () => {
 
   const onSave = () => {
     if (stageRef?.current) {
-      download(stageRef.current.toDataURL())
+      download(stageRef.current.toDataURL({pixelRatio: 2}))
     }
   }
 
