@@ -29,6 +29,7 @@ export const Outer = styled.div`
   height: 100%;
   width: 100%;
   min-height: ${rem(500)};
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 
   @media all and (max-width: 767px) {
     min-height: ${rem(480)};
