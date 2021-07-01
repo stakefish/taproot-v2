@@ -11,9 +11,6 @@ export const Wrapper = styled.div`
   @media all and (max-width: 767px) {
     padding: 24px 20px 16px;
   }
-
-  @media all and (max-width: 767px) {
-  }
 `
 
 export const Outer = styled.div`

@@ -77,13 +77,6 @@ export const detectFace = async (stage: any, stageSize: { width: number; height:
     }
   }
 
-  console.log({
-    coordinates: {
-      x: stageSize.width / SCALE_FACTOR,
-      y: stageSize.height / SCALE_FACTOR,
-    },
-  })
-
   return {
     coordinates: {
       x: stageSize.width / SCALE_FACTOR,

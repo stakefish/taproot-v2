@@ -47,7 +47,6 @@ export const GlobalStyles = createGlobalStyle`
     overscroll-behavior: none;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-
   }
 
   h1, h2, h3, h4, h5 {

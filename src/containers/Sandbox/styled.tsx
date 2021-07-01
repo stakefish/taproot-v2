@@ -36,6 +36,7 @@ export const Wrapper = styled.div<WrapperProps>`
     height: 100%;
     backdrop-filter: blur(18px);
     border-radius: ${rem(24)};
+    transform: rotate3d(0, 0, 0);
   }
 
   .stage {
