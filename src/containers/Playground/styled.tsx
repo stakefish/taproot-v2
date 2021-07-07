@@ -11,9 +11,6 @@ export const Wrapper = styled.div`
   @media all and (max-width: 767px) {
     padding: 24px 20px 16px;
   }
-
-  @media all and (max-width: 767px) {
-  }
 `
 
 export const Outer = styled.div`
@@ -29,6 +26,7 @@ export const Outer = styled.div`
   height: 100%;
   width: 100%;
   min-height: ${rem(500)};
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 
   @media all and (max-width: 767px) {
     min-height: ${rem(480)};

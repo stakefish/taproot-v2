@@ -24,6 +24,7 @@ export const Wrapper = styled.div<WrapperProps>`
   height: 100%;
   transform: translate3d(0, 0, 0);
   cursor: ${(props) => CURSORS.get(props.cursor)};
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 
   &:before {
     content: "";
@@ -35,6 +36,7 @@ export const Wrapper = styled.div<WrapperProps>`
     height: 100%;
     backdrop-filter: blur(18px);
     border-radius: ${rem(24)};
+    transform: rotate3d(0, 0, 0);
   }
 
   .stage {

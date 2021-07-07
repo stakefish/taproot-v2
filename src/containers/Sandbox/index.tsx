@@ -76,7 +76,7 @@ const Sandbox: React.FC<Props> = ({ file, stageRef }: Props) => {
   }, [file, onDetect])
 
   const defaultX = 220
-  const defaultY = 210
+  const defaultY = 230
 
   useEffect(() => {
     const resize = () => {
