@@ -37,6 +37,7 @@ jobs:
         uses: aquiladev/ipfs-action@v0.1.3
         id: ipfs
         with:
+          host: 188.166.116.59
           path: build
 
       - name: Publish IPFS hash
